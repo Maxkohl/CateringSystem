@@ -95,12 +95,15 @@ public class CateringSystemCLI {
 		BigDecimal money = new BigDecimal(0);
 		while (true) {
 			BigDecimal amountInput = menu.getAmountFromUser();
-			register.deposit(amountInput);
-			money = amountInput;
-			break;
+			if (amountInput.compareTo(new BigDecimal(0)) == 1) {
+				register.deposit(amountInput);
+				money = amountInput;
+				logWriter.log(ADD_MONEY, money, register.getAccountBalance(), "", "");
+				break;
+			} else {
+				menu.displayMessage("!--- Negative balance was inputted. Please deposit a positive amount ---!" + System.getProperty("line.separator"));
+			}
 		}
-		logWriter.log(ADD_MONEY, money, register.getAccountBalance(), "", "");
-
 	}
 
 	private void selectProductMenu(String productCode) {
@@ -166,10 +169,10 @@ public class CateringSystemCLI {
 		CateringSystemCLI cli = new CateringSystemCLI(menu);
 		cli.run();
 	}
-	
-	//Feedback
-	//More communication between classes (cart and register ex) Avoid void methods
-	//Change maker use a map instead of counter? 
-	//Better encapsulation, a lot in CLI. Hide a lot in catering system
-	//Negative deposit issue
+
+	// Feedback
+	// More communication between classes (cart and register ex) Avoid void methods
+	// Change maker use a map instead of counter?
+	// Better encapsulation, a lot in CLI. Hide a lot in catering system
+	// Negative deposit issue
 }
