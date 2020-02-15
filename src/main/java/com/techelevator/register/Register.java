@@ -43,6 +43,7 @@ public class Register {
 	public void addToRegister(String productName, ProductSlot productSlot) {
 		registerCart.put(productName, productSlot);
 	}
+	
 	//getTotalPrice move to shopping cart?
 	public BigDecimal getTotalPrice() {
 		BigDecimal totalPrice = new BigDecimal(0);

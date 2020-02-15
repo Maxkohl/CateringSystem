@@ -22,9 +22,9 @@ public class ChangeMakerTest {
 		Register register = new Register();
 		register.deposit(new BigDecimal(87));
 		makeChange.makeChange(register);
-		Assert.assertEquals(makeChange.getTwentiesCount(),4);
-		Assert.assertEquals(makeChange.getFivesCount(),1);
-		Assert.assertEquals(makeChange.getOnesCount(),2);
+		Assert.assertEquals(makeChange.changeMap.get(20),4);
+		Assert.assertEquals(makeChange.changeMap.get(5),1);
+		Assert.assertEquals(makeChange.changeMap.get(1),2);
 	}
 	
 	@Test

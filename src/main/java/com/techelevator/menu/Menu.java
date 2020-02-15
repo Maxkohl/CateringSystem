@@ -25,9 +25,10 @@ public class Menu {
 	}
 
 	public String getInventoryFileFromAdmin() {
-		System.out.print("Admin: Please enter product inventory file path >>> ");
-		out.flush();
-		return in.nextLine();
+		// System.out.print("Admin: Please enter product inventory file path >>> ");
+		// out.flush();
+		// return in.nextLine();
+		return "cateringsystem.csv";
 	}
 
 	public Object getChoiceFromOptions(Object[] options, BigDecimal balance) {
@@ -72,7 +73,8 @@ public class Menu {
 			System.out.println("number format exception occurred");
 		}
 		if (choice == null) {
-			out.println(System.getProperty("line.separator") + "!------ " + userChoice + " is not a valid option. Please try again. ------!");
+			out.println(System.getProperty("line.separator") + "!------ " + userChoice
+					+ " is not a valid option. Please try again. ------!");
 		}
 		return choice;
 	}
@@ -123,13 +125,15 @@ public class Menu {
 		System.out.println("Total Cost: $" + totalCost.setScale(2, RoundingMode.CEILING));
 	}
 
-	public void displayChange(int twentiesCount, int tensCount, int fivesCount, int onesCount, int quartersCount,
-			int dimesCount, int nickelsCount) {
+	public void displayChange(Map<BigDecimal, BigDecimal> changeMap) {
 		String newLine = System.getProperty("line.separator");
-		System.out.println("Your change: ");
-		System.out.println("$20: " + twentiesCount + newLine + "$10: " + tensCount + newLine + "$5: " + fivesCount
-				+ newLine + "$1: " + onesCount + newLine + "$.25: " + quartersCount + newLine + "$.10: " + dimesCount
-				+ newLine + "$.05: " + nickelsCount);
+		for (Entry<BigDecimal, BigDecimal> entry : changeMap.entrySet()) {
+			System.out.println("Your change: ");
+			System.out.println("$20: " + changeMap.get(20) + "$10: " + changeMap.get(10) + newLine + "$5: "
+					+ changeMap.get(5) + newLine + "$1: " + changeMap.get(1) + newLine + "$.25: " + changeMap.get(.25)
+					+ newLine + "$.10: " + changeMap.get(.10) + newLine + "$.05: " + changeMap.get(.05));
+
+		}
 
 	}
 
